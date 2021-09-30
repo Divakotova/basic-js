@@ -1,4 +1,4 @@
-import { NotImplementedError } from '../extensions/index.js';
+//import { NotImplementedError } from '../extensions/index.js';
 
 const MODERN_ACTIVITY = 15;
 const HALF_LIFE_PERIOD = 5730;
@@ -17,7 +17,13 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-export default function dateSample(/* sampleActivity */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function dateSample(sampleActivity) {
+  console.log(+sampleActivity)
+
+  if (isNaN(+sampleActivity) == true ||  +sampleActivity <= 0 || +sampleActivity > 15 || typeof sampleActivity !== 'string') {
+    return false;
+  }
+  else if (sampleActivity == '' || sampleActivity == ' ' || sampleActivity == 'null' || sampleActivity == 'undefined') {return false;}
+  return Math.ceil(Math.log(MODERN_ACTIVITY / +sampleActivity) / (Math.LN2 / HALF_LIFE_PERIOD))
 }
+console.log(dateSample('0'))
