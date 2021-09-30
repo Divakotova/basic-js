@@ -18,12 +18,10 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 export default function dateSample(sampleActivity) {
-  console.log(+sampleActivity)
-
-  if (isNaN(+sampleActivity) == true ||  +sampleActivity <= 0 || +sampleActivity > 15 || typeof sampleActivity !== 'string') {
+   if (isNaN(+sampleActivity) == true ||  +sampleActivity <= 0 || +sampleActivity > 15 || typeof sampleActivity !== 'string') {
     return false;
   }
   else if (sampleActivity == '' || sampleActivity == ' ' || sampleActivity == 'null' || sampleActivity == 'undefined') {return false;}
   return Math.ceil(Math.log(MODERN_ACTIVITY / +sampleActivity) / (Math.LN2 / HALF_LIFE_PERIOD))
 }
-console.log(dateSample('0'))
+
